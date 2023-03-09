@@ -18,5 +18,6 @@ function descifraMensagem(mensagem, movimentos) {
   return msgCifrada.join('');
 }
 
-const msgCifrada = cifraMensagem(mensagemSecreta, 4);
+const msgCifrada = cifraMensagem('casa', 3);
 console.log(msgCifrada);
+console.log(descifraMensagem(msgCifrada, 3));

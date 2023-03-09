@@ -19,8 +19,9 @@ class Usuario {
   }
 }
 
-const user = new Usuario('Cris', 'senha')
+const user = new Usuario('Cris', '12345')
 
-user.autentica('Cris', 'senha')
+console.log(user.hash)
+user.autentica('Cris', '12345')
 
 

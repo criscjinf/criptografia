@@ -26,6 +26,9 @@ class Usuario {
   }
 }
 
-const user = new Usuario('Cris', 'senha')
+const user = new Usuario('Cris', 'testedesenha')
 
-user.autentica('Cris', 'senha')
+console.log(user.sal)
+console.log(user.hash)
+
+user.autentica('Cris', 'testedesenha')

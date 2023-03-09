@@ -27,7 +27,8 @@ const assinatura = assinador.sign(privateKey, 'hex');
 
 console.log(`Assinatura: ${assinatura}`)
 
-// dados = 'Alterei'
+dados += ' teste';
+console.log(dados)
 // Envio desse documento ----- Documento, assinatura e chave pública
 
 const verificador = createVerify('rsa-sha256')
