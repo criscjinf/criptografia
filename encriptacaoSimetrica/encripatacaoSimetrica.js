@@ -1,18 +1,32 @@
-import { createCipheriv, randomBytes, createDecipheriv } from 'crypto'
+import { createCipheriv, createDecipheriv, randomBytes } from 'crypto';
 
-const mensagem = 'Demonstração do curso'
-const chave = randomBytes(32)
-const vi = randomBytes(16)
+const chaveString = 'MinhaChaveCompartilhada123456789'; // Deve ter 32 bytes para AES-256
+const ivString = 'MeuVetorInicial1'; // Deve ter 16 bytes para AES
 
-const cifra = createCipheriv('aes256', chave, vi);
+// const chave = randomBytes(32);
+// const iv = randomBytes(16);
 
-const mensagemCifrada = cifra.update(mensagem, 'utf-8', 'hex') + cifra.final('hex')
+const chave = Buffer.from(chaveString, 'utf-8');
+const iv = Buffer.from(ivString, 'utf-8');
 
-console.log(mensagemCifrada)
+function encrypt(text) {
+  const cipher = createCipheriv('aes-256-cbc', chave, iv);
+  let encrypted = cipher.update(text, 'utf-8', 'hex');
+  encrypted += cipher.final('hex');
+  return encrypted;
+}
 
-// Transmissão ----- chave, vi, mensagem
+function decrypt(encrypted) {
+  const decipher = createDecipheriv('aes-256-cbc', chave, iv);
+  let decrypted = decipher.update(encrypted, 'hex', 'utf-8');
+  decrypted += decipher.final('utf-8');
+  return decrypted;
+}
 
-const decifra = createDecipheriv('aes256', chave, vi)
-const mensagemDescifrada = decifra.update(mensagemCifrada, 'hex', 'utf-8') + decifra.final('utf-8')
+// Exemplo de uso
+const mensagemOriginal = 'Dados sensíveis';
+const mensagemCifrada = encrypt(mensagemOriginal);
+console.log('Mensagem Cifrada:', mensagemCifrada);
 
-console.log(mensagemDescifrada)
+const mensagemDecifrada = decrypt(mensagemCifrada);
+console.log('Mensagem Decifrada:', mensagemDecifrada);
