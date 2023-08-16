@@ -18,9 +18,9 @@ class Usuario {
   }
 }
 
-const user = new Usuario('Cris', '1234')
+const user = new Usuario('Cris', '2598')
 
-// console.log(user.hash)
+console.log(user.hash)
 // user.autentica('Cris', '12345')
 
 for (let senhaTeste = 0; senhaTeste < 10000; senhaTeste++) {

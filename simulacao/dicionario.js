@@ -18,7 +18,7 @@ class Usuario {
   }
 }
 
-const user = new Usuario('Cris', 'senha1234')
+const user = new Usuario('Cris', 'senha123')
 
 
 const senhasComuns = ["senha", "senha123", "senha1234", "admin", "blink182", "meuAniversario", "senha123456", "brasil", "102030"]
